@@ -13,9 +13,9 @@ public class Tutor {
 	private String tutorId;
 	private String name;
 	private int salary;
-	
+
 	public Tutor() {
-		
+
 	}
 
 	public Tutor(String tutorId, String name, int salary) {
@@ -23,17 +23,40 @@ public class Tutor {
 		this.name = name;
 		this.salary = salary;
 	}
-	
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getTutorId() {
+		return tutorId;
+	}
+
+	public void setTutorId(String tutorId) {
+		this.tutorId = tutorId;
+	}
+
 	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 
 	public String toString() {
 		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d");
 	}
 }
-
-/*
- * private String tutorId private String name private int salary A constructor
- * with the above properties as arguments. Accessors (get methods) toString()
- */

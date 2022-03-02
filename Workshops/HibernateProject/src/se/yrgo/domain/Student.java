@@ -36,7 +36,7 @@ public class Student {
 		this.tutorName = null;
 		this.numberOfCourses = 10;
 	}
-	
+
 	public String getTutorName() {
 		return tutorName;
 	}
