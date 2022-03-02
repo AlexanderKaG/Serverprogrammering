@@ -103,7 +103,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [Id=" + Id + ", enrollmentID=" + enrollmentID + ", name=" + name + ", tutorName=" + tutor
-				+ ", numberOfCourses=" + numberOfCourses + "]";
+		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Tutor: %s, Number of courses: %d", Id, enrollmentID, name, tutor, numberOfCourses);
 	}
 }

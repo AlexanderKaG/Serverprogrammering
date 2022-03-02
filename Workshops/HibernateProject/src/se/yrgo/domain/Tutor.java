@@ -58,6 +58,6 @@ public class Tutor {
 
 	@Override
 	public String toString() {
-		return "Tutor [Id=" + Id + ", tutorId=" + tutorId + ", name=" + name + ", salary=" + salary + "]";
+		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d", Id, tutorId, name, salary);
 	}
 }
