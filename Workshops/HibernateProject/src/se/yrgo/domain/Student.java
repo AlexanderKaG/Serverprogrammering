@@ -1,5 +1,6 @@
 package se.yrgo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ public class Student {
 	private String enrollmentID;
 	private String name;
 	private String tutorName; // This will become a class soon
+	@Column (name="NUM_COURSES")
+	private Integer numberOfCourses;
 
 	public Student() {
 

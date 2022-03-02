@@ -20,15 +20,8 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		// Student newStudent= new Student("Nick Fame", "Diamond Cameron");
-		// session.save(newStudent);
-		// Student myStudent = (Student) session.get(Student.class, 2);
-		// System.out.println(myStudent);
-		// session.delete(myStudent);
-		// Student anotherStudent = new Student("Bob Jones", "John Westland");
-		// session.save(anotherStudent);
-		Student anotherStudent = (Student) session.get(Student.class, 3);
-		anotherStudent.setTutorName("David Graveyard");
+		Student newStudent = new Student("Ada Svensson");
+		session.save(newStudent);
 
 		tx.commit();
 		session.close();
