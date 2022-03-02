@@ -36,9 +36,45 @@ public class Student {
 		this.tutorName = null;
 		this.numberOfCourses = 10;
 	}
+	
+	public String getTutorName() {
+		return tutorName;
+	}
 
 	public void setTutorName(String tutorName) {
 		this.tutorName = tutorName;
+	}
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
+
+	public String getEnrollmentID() {
+		return enrollmentID;
+	}
+
+	public void setEnrollmentID(String enrollmentID) {
+		this.enrollmentID = enrollmentID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getNumberOfCourses() {
+		return numberOfCourses;
+	}
+
+	public void setNumberOfCourses(Integer numberOfCourses) {
+		this.numberOfCourses = numberOfCourses;
 	}
 
 	public String toString() {
