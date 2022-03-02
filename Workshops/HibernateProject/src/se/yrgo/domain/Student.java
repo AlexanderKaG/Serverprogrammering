@@ -29,6 +29,7 @@ public class Student {
 	public Student(String name) {
 		this.name = name;
 		this.tutorName = null;
+		this.numberOfCourses = 10;
 	}
 
 	public void setTutorName(String tutorName) {
