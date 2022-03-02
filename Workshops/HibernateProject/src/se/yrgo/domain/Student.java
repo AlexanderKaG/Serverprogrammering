@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table (name="TBL_STUDENT")
+@Table(name = "TBL_STUDENT")
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
@@ -17,7 +17,7 @@ public class Student {
 	private String enrollmentID;
 	private String name;
 	private String tutorName; // This will become a class soon
-	@Column (name="NUM_COURSES")
+	@Column(name = "NUM_COURSES")
 	private Integer numberOfCourses;
 	@Transient
 	private String email;
