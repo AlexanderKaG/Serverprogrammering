@@ -28,6 +28,10 @@ public class Student {
 		this.tutorName = null;
 	}
 
+	public void setTutorName(String tutorName) {
+		this.tutorName = tutorName;
+	}
+
 	public String toString() {
 		return String.format("ID: %d, Name: %s, EnrollmentID: %s, Tutor: %s", Id, name, enrollmentID, tutorName);
 	}

@@ -25,8 +25,10 @@ public class HibernateTest {
 		// Student myStudent = (Student) session.get(Student.class, 2);
 		// System.out.println(myStudent);
 		// session.delete(myStudent);
-		Student anotherStudent = new Student("Bob Jones", "John Westland");
-		session.save(anotherStudent);
+		// Student anotherStudent = new Student("Bob Jones", "John Westland");
+		// session.save(anotherStudent);
+		Student anotherStudent = (Student) session.get(Student.class, 3);
+		anotherStudent.setTutorName("David Graveyard");
 
 		tx.commit();
 		session.close();
