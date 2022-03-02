@@ -18,9 +18,14 @@ public class Tutor {
 		
 	}
 
-	public Tutor(String tutorId, int salary) {
+	public Tutor(String tutorId, String name, int salary) {
 		this.tutorId = tutorId;
+		this.name = name;
 		this.salary = salary;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	public String toString() {
