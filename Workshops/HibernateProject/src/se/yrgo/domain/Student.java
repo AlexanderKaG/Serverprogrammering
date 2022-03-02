@@ -42,6 +42,6 @@ public class Student {
 	}
 
 	public String toString() {
-		return String.format("ID: %d, Name: %s, EnrollmentID: %s, Tutor: %s", Id, name, enrollmentID, tutorName);
+		return String.format("ID: %d, EnrollmentID: %s, Name: %s, Tutor: %s", Id, enrollmentID, name, tutorName);
 	}
 }
