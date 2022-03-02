@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table (name="TBL_STUDENT")
@@ -18,6 +19,8 @@ public class Student {
 	private String tutorName; // This will become a class soon
 	@Column (name="NUM_COURSES")
 	private Integer numberOfCourses;
+	@Transient
+	private String email;
 
 	public Student() {
 
