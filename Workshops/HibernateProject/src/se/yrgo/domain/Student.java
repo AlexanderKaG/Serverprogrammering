@@ -5,46 +5,48 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name = "TBL_STUDENT")
 public class Student {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	private int Id;
 	private String enrollmentID;
 	private String name;
-	private String tutorName; // This will become a class soon
-	@Column(name = "NUM_COURSES")
+	private Tutor tutor; // This will become a class soon
 	private Integer numberOfCourses;
-	@Transient
 	private String email;
 
 	public Student() {
 
 	}
 
-	public Student(String name, String tutorName) {
+	public Student(String name, Tutor tutor) {
 		this.name = name;
-		this.tutorName = tutorName;
+		this.tutor = tutor;
 	}
 
 	public Student(String name) {
 		this.name = name;
-		this.tutorName = null;
+		this.tutor = null;
 		this.numberOfCourses = 10;
 	}
 
-	public String getTutorName() {
-		return tutorName;
+	@ManyToOne
+	@JoinColumn(name="TUTOR_FK")
+	public Tutor getTutor() {
+		return tutor;
 	}
 
-	public void setTutorName(String tutorName) {
-		this.tutorName = tutorName;
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
 		return Id;
 	}
@@ -69,6 +71,7 @@ public class Student {
 		this.name = name;
 	}
 
+	@Column(name = "NUM_COURSES")
 	public Integer getNumberOfCourses() {
 		return numberOfCourses;
 	}
@@ -77,7 +80,30 @@ public class Student {
 		this.numberOfCourses = numberOfCourses;
 	}
 
+	@Transient
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void allocateTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+	public String getTutorName() {
+		return this.tutor.getName();
+	}
+	
+	public void setTutorName(String name) {
+		this.tutor.setName(name);;
+	}
+
+	@Override
 	public String toString() {
-		return String.format("ID: %d, EnrollmentID: %s, Name: %s, Tutor: %s", Id, enrollmentID, name, tutorName);
+		return "Student [Id=" + Id + ", enrollmentID=" + enrollmentID + ", name=" + name + ", tutorName=" + tutor
+				+ ", numberOfCourses=" + numberOfCourses + "]";
 	}
 }

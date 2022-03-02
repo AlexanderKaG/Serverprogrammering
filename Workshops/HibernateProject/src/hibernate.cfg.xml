@@ -20,6 +20,7 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<mapping class="se.yrgo.domain.Student" />
+		<mapping class="se.yrgo.domain.Tutor" />
 	</session-factory>
 
 </hibernate-configuration>

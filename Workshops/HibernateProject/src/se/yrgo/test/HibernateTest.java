@@ -8,6 +8,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import se.yrgo.domain.Student;
+import se.yrgo.domain.Tutor;
 
 public class HibernateTest {
 
@@ -20,8 +21,13 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		Student newStudent = new Student("Ada Svensson");
-		session.save(newStudent);
+		Tutor tutor = new Tutor("ABC123", "Edward", 30000);
+		Student student = new Student("Sara Hedborn");
+		student.allocateTutor(tutor);
+		System.out.println(student.getTutorName());
+
+		session.save(student);
+		session.save(tutor);
 
 		tx.commit();
 		session.close();

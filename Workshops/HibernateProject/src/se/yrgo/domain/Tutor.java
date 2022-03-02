@@ -7,8 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Tutor {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	private int Id;
 	private String tutorId;
 	private String name;
@@ -24,6 +22,8 @@ public class Tutor {
 		this.salary = salary;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
 		return Id;
 	}
@@ -56,7 +56,8 @@ public class Tutor {
 		this.salary = salary;
 	}
 
+	@Override
 	public String toString() {
-		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d");
+		return "Tutor [Id=" + Id + ", tutorId=" + tutorId + ", name=" + name + ", salary=" + salary + "]";
 	}
 }
