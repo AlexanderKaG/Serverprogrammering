@@ -28,4 +28,7 @@ public class Student {
 		this.tutorName = null;
 	}
 
+	public String toString() {
+		return String.format("ID: %d, Name: %s, EnrollmentID: %s", Id, name, enrollmentID);
+	}
 }
