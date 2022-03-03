@@ -104,7 +104,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Tutor: %s, Number of courses: %d", Id, enrollmentID,
-				name, /*tutor,*/ numberOfCourses);
+		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Number of courses: %d", Id, enrollmentID,
+				name, /* tutor, */ numberOfCourses);
 	}
 }

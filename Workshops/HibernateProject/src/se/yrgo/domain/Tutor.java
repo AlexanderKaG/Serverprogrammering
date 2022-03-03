@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Tutor {
@@ -32,11 +33,16 @@ public class Tutor {
 		this.teachingGroup.add(newStudent);
 	}
 
+	@OneToMany
 	public Set<Student> getTeachingGroup() {
 		Set<Student> unmodifiable = Collections.unmodifiableSet(this.teachingGroup);
 		return unmodifiable;
 	}
 
+	public void setTeachingGroup(Set<Student> teachingGroup) {
+		this.teachingGroup = teachingGroup;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
