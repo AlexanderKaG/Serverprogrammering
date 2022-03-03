@@ -23,24 +23,33 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		Tutor newTutor = new Tutor("ABC234", "Natalie Woodward", 387787);
-		Student student1 = new Student("Patrik Howard");
-		Student student2 = new Student("Marie Sani");
-		Student student3 = new Student("Tom Nikson");
+//		Tutor newTutor = new Tutor("ABC234", "Natalie Woodward", 387787);
+//		Student student1 = new Student("Patrik Howard");
+//		Student student2 = new Student("Marie Sani");
+//		Student student3 = new Student("Tom Nikson");
+//
+//		newTutor.addStudentToTeachingGroup(student1);
+//		newTutor.addStudentToTeachingGroup(student2);
+//		newTutor.addStudentToTeachingGroup(student3);
+//
+//		session.save(student1);
+//		session.save(student2);
+//		session.save(student3);
+//		session.save(newTutor);	
+//		
+//		Set<Student> students = newTutor.getTeachingGroup();
+//		for (Student student : students) {
+//			System.out.println(student);
 
-		newTutor.addStudentToTeachingGroup(student1);
-		newTutor.addStudentToTeachingGroup(student2);
-		newTutor.addStudentToTeachingGroup(student3);
+		Tutor myTutor = (Tutor) session.get(Tutor.class, 1);
+//		Set<Student> students = myTutor.getTeachingGroup();
+//		for (Student s : students) {
+//			System.out.println(s);
+//		}
 
-		session.save(student1);
-		session.save(student2);
-		session.save(student3);
-		session.save(newTutor);	
-		
-		Set<Student> students = newTutor.getTeachingGroup();
-		for (Student student : students) {
-			System.out.println(student);
-		}	
+		Student student4 = new Student("Julia Ericcson");
+		session.save(student4);
+		myTutor.addStudentToTeachingGroup(student4);
 
 		tx.commit();
 		session.close();
