@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,7 @@ public class Tutor {
 	private String name;
 	private int salary;
 	private Set<Student> teachingGroup;
+	private Set<Subject> subjectsToTeach;
 
 	public Tutor() {
 
@@ -28,6 +30,11 @@ public class Tutor {
 		this.name = name;
 		this.salary = salary;
 		this.teachingGroup = new HashSet<Student>();
+		this.subjectsToTeach = new HashSet<Subject>();
+	}
+
+	public void addSubjectsToTeach(Subject subject) {
+		this.subjectsToTeach.add(subject);
 	}
 
 	public void addStudentToTeachingGroup(Student newStudent) {
@@ -43,6 +50,15 @@ public class Tutor {
 
 	public void setTeachingGroup(Set<Student> teachingGroup) {
 		this.teachingGroup = teachingGroup;
+	}
+
+	@ManyToMany(mappedBy = "tutors")
+	public Set<Subject> getSubjectsToTeach() {
+		return subjectsToTeach;
+	}
+
+	public void setSubjectsToTeach(Set<Subject> subjectsToTeach) {
+		this.subjectsToTeach = subjectsToTeach;
 	}
 
 	@Id

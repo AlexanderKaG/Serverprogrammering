@@ -10,6 +10,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import se.yrgo.domain.Student;
+import se.yrgo.domain.Subject;
 import se.yrgo.domain.Tutor;
 
 public class HibernateTest {
@@ -37,10 +38,16 @@ public class HibernateTest {
 		session.save(student3);
 		session.save(newTutor);
 
-		Set<Student> students = newTutor.getTeachingGroup();
-		for (Student student : students) {
-			System.out.println(student);
-		}
+		Subject subject1 = new Subject("Math", 3);
+		Subject subject2 = new Subject("Science", 6);
+
+		session.save(subject1);
+		session.save(subject2);
+
+//		Set<Student> students = newTutor.getTeachingGroup();
+//		for (Student student : students) {
+//			System.out.println(student);
+//		}
 //		Tutor myTutor = (Tutor) session.get(Tutor.class, 1);
 //		Set<Student> students = myTutor.getTeachingGroup();
 //		for (Student s : students) {
