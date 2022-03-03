@@ -1,7 +1,9 @@
 package se.yrgo.domain;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,7 +20,7 @@ public class Tutor {
 	private String tutorId;
 	private String name;
 	private int salary;
-	private Set<Student> teachingGroup;
+	private Map<String, Student> teachingGroup;
 
 	public Tutor() {
 
@@ -27,21 +30,21 @@ public class Tutor {
 		this.tutorId = tutorId;
 		this.name = name;
 		this.salary = salary;
-		this.teachingGroup = new HashSet<Student>();
+		this.teachingGroup = new HashMap<String, Student>();
 	}
 
 	public void addStudentToTeachingGroup(Student newStudent) {
-		this.teachingGroup.add(newStudent);
+		this.teachingGroup.put(newStudent.getEnrollmentID(), newStudent);
 	}
 
 	@OneToMany
-	@JoinColumn(name = "TUTOR_FK")
-	public Set<Student> getTeachingGroup() {
-		Set<Student> unmodifiable = Collections.unmodifiableSet(this.teachingGroup);
+	@MapKey(name = "enrollmentID")
+	public Map<String, Student> getTeachingGroup() {
+		Map<String, Student> unmodifiable = Collections.unmodifiableMap(this.teachingGroup);
 		return unmodifiable;
 	}
 
-	public void setTeachingGroup(Set<Student> teachingGroup) {
+	public void setTeachingGroup(Map<String, Student> teachingGroup) {
 		this.teachingGroup = teachingGroup;
 	}
 
