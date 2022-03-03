@@ -44,6 +44,18 @@ public class HibernateTest {
 		session.save(subject1);
 		session.save(subject2);
 
+		newTutor.addSubjectsToTeach(subject1);
+		newTutor.addSubjectsToTeach(subject2);
+
+		subject1.addTutorToSubject(newTutor);
+		subject2.addTutorToSubject(newTutor);
+
+		Tutor secondTutor = new Tutor("FJK", "Ben Aflek", 3585895);
+		session.save(secondTutor);
+
+		secondTutor.addSubjectsToTeach(subject2);
+		subject2.addTutorToSubject(secondTutor);
+
 //		Set<Student> students = newTutor.getTeachingGroup();
 //		for (Student student : students) {
 //			System.out.println(student);
