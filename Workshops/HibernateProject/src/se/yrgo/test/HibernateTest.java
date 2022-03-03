@@ -21,8 +21,13 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		Student student2 = (Student) session.get(Student.class, 2);
-		student2.allocateTutor(null);
+//		Tutor tutor = new Tutor("B5", "Henrik Larsson", 30000);
+//		Student student = new Student("Anna Hallberg", tutor);
+//		session.save(tutor);
+//		session.save(student);
+		Student student2 = (Student) session.get(Student.class, 3);
+		Tutor tutor2 = (Tutor) session.get(Tutor.class, 1);
+		student2.allocateTutor(tutor2);
 
 		tx.commit();
 		session.close();

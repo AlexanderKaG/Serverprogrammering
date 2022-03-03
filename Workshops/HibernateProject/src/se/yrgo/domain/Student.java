@@ -13,17 +13,11 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "TBL_STUDENT")
 public class Student {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	private int Id;
 	private String enrollmentID;
 	private String name;
-	@ManyToOne
-	@JoinColumn(name = "TUTOR_FK")
 	private Tutor tutor; // This will become a class soon
-	@Column(name = "NUM_COURSES")
 	private Integer numberOfCourses;
-	@Transient
 	private String email;
 
 	public Student() {
@@ -41,6 +35,8 @@ public class Student {
 		this.numberOfCourses = 10;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "TUTOR_FK")
 	public Tutor getTutor() {
 		return tutor;
 	}
@@ -49,6 +45,8 @@ public class Student {
 		this.tutor = tutor;
 	}
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
 		return Id;
 	}
@@ -73,6 +71,7 @@ public class Student {
 		this.name = name;
 	}
 
+	@Column(name = "NUM_COURSES")
 	public Integer getNumberOfCourses() {
 		return numberOfCourses;
 	}
@@ -81,6 +80,7 @@ public class Student {
 		this.numberOfCourses = numberOfCourses;
 	}
 
+	@Transient
 	public String getEmail() {
 		return email;
 	}
@@ -93,6 +93,7 @@ public class Student {
 		this.tutor = tutor;
 	}
 
+	@Transient
 	public String getTutorName() {
 		return this.tutor.getName();
 	}
