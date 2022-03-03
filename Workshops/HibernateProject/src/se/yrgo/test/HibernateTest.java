@@ -1,5 +1,6 @@
 package se.yrgo.test;
 
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Session;
@@ -23,24 +24,33 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		Tutor newTutor = new Tutor("ABC234", "Natalie Woodward", 387787);
-		Student student1 = new Student("Patrik Howard");
-		Student student2 = new Student("Marie Sani");
-		Student student3 = new Student("Tom Nikson");
+//		Tutor newTutor = new Tutor("ABC234", "Natalie Woodward", 387787);
+//		Student student1 = new Student("Patrik Howard", "1-HOW-2017");
+//		Student student2 = new Student("Marie Sani", "2-SAN-2018");
+//		Student student3 = new Student("Tom Nikson", "3-NIK-2019");
+//
+//		newTutor.addStudentToTeachingGroup(student1);
+//		newTutor.addStudentToTeachingGroup(student2);
+//		newTutor.addStudentToTeachingGroup(student3);
+//
+//		session.save(student1);
+//		session.save(student2);
+//		session.save(student3);
+//		session.save(newTutor);
 
-		newTutor.addStudentToTeachingGroup(student1);
-		newTutor.addStudentToTeachingGroup(student2);
-		newTutor.addStudentToTeachingGroup(student3);
+		Tutor myTutor = (Tutor) session.get(Tutor.class, 1);
+		Map<String, Student> students = myTutor.getTeachingGroup();
 
-		session.save(student1);
-		session.save(student2);
-		session.save(student3);
-		session.save(newTutor);
-
-		Set<Student> students = newTutor.getTeachingGroup();
-		for (Student student : students) {
+		for (Student student : students.values()) {
 			System.out.println(student);
 		}
+
+		Student s = students.get("3-NIK-2019");
+		System.out.println("found the student  " + s);
+//		Set<Student> students = newTutor.getTeachingGroup();
+//		for (Student student : students) {
+//			System.out.println(student);
+//		}
 //		Tutor myTutor = (Tutor) session.get(Tutor.class, 1);
 //		Set<Student> students = myTutor.getTeachingGroup();
 //		for (Student s : students) {
