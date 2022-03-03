@@ -24,8 +24,9 @@ public class Student {
 
 	}
 
-	public Student(String name, Tutor tutor) {
+	public Student(String name, String enrollmentID) {
 		this.name = name;
+		this.enrollmentID = enrollmentID;
 //		this.tutor = tutor;
 	}
 
