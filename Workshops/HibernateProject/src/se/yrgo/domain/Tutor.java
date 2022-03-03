@@ -1,5 +1,9 @@
 package se.yrgo.domain;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +15,7 @@ public class Tutor {
 	private String tutorId;
 	private String name;
 	private int salary;
+	private Set<Student> teachingGroup;
 
 	public Tutor() {
 
@@ -20,6 +25,16 @@ public class Tutor {
 		this.tutorId = tutorId;
 		this.name = name;
 		this.salary = salary;
+		this.teachingGroup = new HashSet<Student>();
+	}
+
+	public void addStudentToTeachingGroup(Student newStudent) {
+		this.teachingGroup.add(newStudent);
+	}
+
+	public Set<Student> getTeachingGroup() {
+		Set<Student> unmodifiable = Collections.unmodifiableSet(this.teachingGroup);
+		return unmodifiable;
 	}
 
 	@Id
