@@ -5,18 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "TBL_STUDENT")
 public class Student {
 	private int Id;
 	private String enrollmentID;
 	private String name;
-//	private Tutor tutor; // This will become a class soon
 	private Integer numberOfCourses;
 	private String email;
 
@@ -24,26 +19,10 @@ public class Student {
 
 	}
 
-	public Student(String name, Tutor tutor) {
-		this.name = name;
-//		this.tutor = tutor;
-	}
-
 	public Student(String name) {
 		this.name = name;
-//		this.tutor = null;
 		this.numberOfCourses = 10;
 	}
-
-//	@ManyToOne
-//	@JoinColumn(name = "TUTOR_FK")
-//	public Tutor getTutor() {
-//		return tutor;
-//	}
-//
-//	public void setTutor(Tutor tutor) {
-//		this.tutor = tutor;
-//	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
@@ -89,22 +68,9 @@ public class Student {
 		this.email = email;
 	}
 
-//	public void allocateTutor(Tutor tutor) {
-//		this.tutor = tutor;
-//	}
-
-//	@Transient
-//	public String getTutorName() {
-//		return this.tutor.getName();
-//	}
-//
-//	public void setTutorName(String name) {
-//		this.tutor.setName(name);
-//	}
-
 	@Override
 	public String toString() {
 		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Number of courses: %d", Id, enrollmentID,
-				name, /* tutor, */ numberOfCourses);
+				name, numberOfCourses);
 	}
 }
