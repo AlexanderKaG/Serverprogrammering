@@ -8,6 +8,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import se.yrgo.domain.Student;
+import se.yrgo.domain.Tutor;
 
 public class HibernateTest {
 
@@ -20,8 +21,8 @@ public class HibernateTest {
 
 		Transaction tx = session.beginTransaction();
 
-		Student newStudent = new Student("Ada Svensson");
-		session.save(newStudent);
+		Student student2 = (Student) session.get(Student.class, 2);
+		student2.allocateTutor(null);
 
 		tx.commit();
 		session.close();
