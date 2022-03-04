@@ -29,6 +29,7 @@ public class Subject {
 
 	public void addTutorToSubject(Tutor tutor) {
 		this.tutors.add(tutor);
+		tutor.getSubjects().add(this);
 	}
 
 	@ManyToMany

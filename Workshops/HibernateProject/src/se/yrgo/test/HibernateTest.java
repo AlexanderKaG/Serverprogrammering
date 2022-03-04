@@ -1,7 +1,5 @@
 package se.yrgo.test;
 
-import java.util.Set;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -47,28 +45,11 @@ public class HibernateTest {
 		newTutor.addSubjectsToTeach(subject1);
 		newTutor.addSubjectsToTeach(subject2);
 
-		subject1.addTutorToSubject(newTutor);
-		subject2.addTutorToSubject(newTutor);
-
 		Tutor secondTutor = new Tutor("FJK", "Ben Aflek", 3585895);
 		session.save(secondTutor);
 
 		secondTutor.addSubjectsToTeach(subject2);
 		subject2.addTutorToSubject(secondTutor);
-
-//		Set<Student> students = newTutor.getTeachingGroup();
-//		for (Student student : students) {
-//			System.out.println(student);
-//		}
-//		Tutor myTutor = (Tutor) session.get(Tutor.class, 1);
-//		Set<Student> students = myTutor.getTeachingGroup();
-//		for (Student s : students) {
-//			System.out.println(s);
-//		}
-//
-//		Student student4 = new Student("Julia Ericcson");
-//		session.save(student4);
-//		myTutor.addStudentToTeachingGroup(student4);
 
 		tx.commit();
 		session.close();

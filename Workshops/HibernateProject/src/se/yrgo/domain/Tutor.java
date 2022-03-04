@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Tutor {
@@ -35,6 +36,7 @@ public class Tutor {
 
 	public void addSubjectsToTeach(Subject subject) {
 		this.subjectsToTeach.add(subject);
+		subject.getTutors().add(this);
 	}
 
 	public void addStudentToTeachingGroup(Student newStudent) {
@@ -59,6 +61,11 @@ public class Tutor {
 
 	public void setSubjectsToTeach(Set<Subject> subjectsToTeach) {
 		this.subjectsToTeach = subjectsToTeach;
+	}
+
+	@Transient
+	public Set<Subject> getSubjects() {
+		return this.subjectsToTeach;
 	}
 
 	@Id
