@@ -23,27 +23,53 @@ public class HibernateTest {
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 
-		Tutor tutor = new Tutor("ABD", "Bengt Haglund", 40000);
-		Student student = new Student(" Christopher Bail", "1-BAI-2018");
+//		Tutor tutor = new Tutor("ABD", "Bengt Haglund", 40000);
+//		Student student = new Student(" Christopher Bail", "1-BAI-2018");
+//
+//		tutor.addStudentToTeachingGroup(student);
+//
+//		session.save(tutor);
+//		session.save(student);
 
-		tutor.addStudentToTeachingGroup(student);
-		session.save(student);
-		session.save(tutor);
+		Tutor t1 = new Tutor("ABC123", "Teacher 1", 290000);
 
-		Set<Student> students = tutor.getTeachingGroup();
-		for (Student index : students) {
-			System.out.println(index);
+		Student s1 = new Student("Student1", "1-STU-2019");
+		t1.addStudentToTeachingGroup(s1);
+
+		Student s2 = new Student("Student2", "2-STU-2018");
+		t1.addStudentToTeachingGroup(s2);
+
+		Student s3 = new Student("Student3", "3-STU-2017");
+		t1.addStudentToTeachingGroup(s3);
+
+		session.save(t1);
+		session.save(s1);
+		session.save(s2);
+		session.save(s3);
+
+		Set<Student> allStudents = t1.getTeachingGroup();
+		System.out.println("This size is: " + allStudents.size());
+
+		Set<Student> students = t1.getTeachingGroup();
+		for (Student s : students) {
+			System.out.println(s);
 		}
 
 		tx.commit();
 		session.close();
-		/*
-		 * session = sf.openSession(); tx = session.beginTransaction();
-		 * 
-		 * Tutor tutor1 = (Tutor) session.get(Tutor.class, 1); Set<Student> students =
-		 * tutor1.getTeachingGroup(); for (Student s : students) {
-		 * System.out.println(s); } tx.commit(); session.close();
-		 */
+
+//		session = sf.openSession();
+//		tx = session.beginTransaction();
+//
+//		Tutor tutor1 = (Tutor) session.get(Tutor.class, 1);
+//		Set<Student> students = tutor1.getTeachingGroup();
+////		for (Student s : students) {
+////			System.out.println(s);
+////		}
+//		boolean isChrisInTeachingGroup = students.contains(student);
+//		System.out.println(isChrisInTeachingGroup);
+//		tx.commit();
+//		session.close();
 	}
 
 	private static SessionFactory getSessionFactory() {

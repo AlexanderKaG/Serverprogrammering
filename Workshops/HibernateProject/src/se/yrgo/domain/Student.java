@@ -37,6 +37,7 @@ public class Student {
 		Id = id;
 	}
 
+	@Column(unique = true, nullable = false)
 	public String getEnrollmentID() {
 		return enrollmentID;
 	}
@@ -73,7 +74,7 @@ public class Student {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(enrollmentID);
+		return Objects.hash(Id);
 	}
 
 	@Override
@@ -85,7 +86,7 @@ public class Student {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
-		return Objects.equals(enrollmentID, other.enrollmentID);
+		return Id == other.Id;
 	}
 
 	@Override

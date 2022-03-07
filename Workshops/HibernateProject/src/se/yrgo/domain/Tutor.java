@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Tutor {
@@ -64,6 +66,11 @@ public class Tutor {
 		this.subjectsToTeach = subjectsToTeach;
 	}
 
+	@Transient
+	public Set<Subject> getSubjects() {
+		return this.subjectsToTeach;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
@@ -74,6 +81,7 @@ public class Tutor {
 		Id = id;
 	}
 
+	@Column(unique = true, nullable = false)
 	public String getTutorId() {
 		return tutorId;
 	}
