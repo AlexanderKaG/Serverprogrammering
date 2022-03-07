@@ -11,10 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 @Entity
 public class Tutor {
+
 	private int Id;
 	private String tutorId;
 	private String name;
@@ -27,6 +27,7 @@ public class Tutor {
 	}
 
 	public Tutor(String tutorId, String name, int salary) {
+
 		this.tutorId = tutorId;
 		this.name = name;
 		this.salary = salary;
@@ -61,11 +62,6 @@ public class Tutor {
 
 	public void setSubjectsToTeach(Set<Subject> subjectsToTeach) {
 		this.subjectsToTeach = subjectsToTeach;
-	}
-
-	@Transient
-	public Set<Subject> getSubjects() {
-		return this.subjectsToTeach;
 	}
 
 	@Id
