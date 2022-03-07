@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,11 @@ public class Tutor {
 		this.subjectsToTeach = new HashSet<Subject>();
 	}
 
+	public void createStudentAndAddtoTeachingGroup(String studentName, String enrollmentID) {
+		Student student = new Student(studentName, enrollmentID);
+		this.addStudentToTeachingGroup(student);
+	}
+
 	public void addSubjectsToTeach(Subject subject) {
 		this.subjectsToTeach.add(subject);
 		subject.getTutors().add(this);
@@ -46,7 +52,7 @@ public class Tutor {
 		this.teachingGroup.add(newStudent);
 	}
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "TUTOR_FK")
 	public Set<Student> getTeachingGroup() {
 		Set<Student> unmodifiable = Collections.unmodifiableSet(this.teachingGroup);
