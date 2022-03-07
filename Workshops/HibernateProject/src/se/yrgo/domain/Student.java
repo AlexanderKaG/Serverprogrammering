@@ -74,7 +74,7 @@ public class Student {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(enrollmentID);
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class Student {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
-		return Id == other.Id;
+		return Objects.equals(enrollmentID, other.enrollmentID);
 	}
 
 	@Override
