@@ -12,17 +12,17 @@ import javax.persistence.Transient;
 
 @Entity
 public class Student {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	private int Id;
-	@Column(unique = true, nullable = false)
+//	@Column(unique = true, nullable = false)
 	private String enrollmentID;
 	private String name;
-	@Column(name = "NUM_COURSES")
+//	@Column(name = "NUM_COURSES")
 	private Integer numberOfCourses;
-	@Transient
+//	@Transient
 	private String email;
-	@Embedded
+//	@Embedded
 	private Address address;
 
 	public Student() {
@@ -36,8 +36,8 @@ public class Student {
 		this.address = new Address(street, city, zipcode);
 	}
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	public int getId() {
 		return Id;
 	}
@@ -46,7 +46,7 @@ public class Student {
 		Id = id;
 	}
 
-//	@Column(unique = true, nullable = false)
+	@Column(unique = true, nullable = false)
 	public String getEnrollmentID() {
 		return enrollmentID;
 	}
@@ -63,7 +63,7 @@ public class Student {
 		this.name = name;
 	}
 
-//	@Column(name = "NUM_COURSES")
+	@Column(name = "NUM_COURSES")
 	public Integer getNumberOfCourses() {
 		return numberOfCourses;
 	}
@@ -72,7 +72,7 @@ public class Student {
 		this.numberOfCourses = numberOfCourses;
 	}
 
-//	@Transient
+	@Transient
 	public String getEmail() {
 		return email;
 	}
@@ -81,7 +81,7 @@ public class Student {
 		this.email = email;
 	}
 
-//	@Embedded
+	@Embedded
 	public Address getAddress() {
 		return address;
 	}
