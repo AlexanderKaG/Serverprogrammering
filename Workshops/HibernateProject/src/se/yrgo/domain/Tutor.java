@@ -38,8 +38,9 @@ public class Tutor {
 		this.subjectsToTeach = new HashSet<Subject>();
 	}
 
-	public void createStudentAndAddtoTeachingGroup(String studentName, String enrollmentID) {
-		Student student = new Student(studentName, enrollmentID);
+	public void createStudentAndAddtoTeachingGroup(String studentName, String enrollmentID, String street, String city,
+			String zipcode) {
+		Student student = new Student(studentName, enrollmentID, street, city, zipcode);
 		this.addStudentToTeachingGroup(student);
 	}
 
