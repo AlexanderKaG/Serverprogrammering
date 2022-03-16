@@ -26,11 +26,11 @@ public class Student {
 //	@Transient
 	private String email;
 //	@Embedded
-//	private Address address;
+	private Address address;
 	
-	private String street;
-	private String city;
-	private String zipcode;
+//	private String street;
+//	private String city;
+//	private String zipcode;
 
 	public Student() {
 
@@ -40,10 +40,10 @@ public class Student {
 		this.name = name;
 		this.enrollmentID = enrollmentID;
 		this.numberOfCourses = 10;
-//		this.address = new Address(street, city, zipcode);
-		this.street = street;
-		this.city = city;
-		this.zipcode = zipcode;
+		this.address = new Address(street, city, zipcode);
+//		this.street = street;
+//		this.city = city;
+//		this.zipcode = zipcode;
 	}
 
 	@Id
@@ -91,14 +91,14 @@ public class Student {
 		this.email = email;
 	}
 
-//	@Embedded
-//	public Address getAddress() {
-//		return address;
-//	}
-//
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
+	@Embedded
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@Override
 	public int hashCode() {
@@ -119,34 +119,34 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Number of courses: %d", Id,
-				enrollmentID, name, /*address*/numberOfCourses);
+		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Address: %s, Number of courses: %d", Id,
+				enrollmentID, name, address, numberOfCourses);
 	}
 
-	@Column (table="ADDRESS")
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	@Column (table="ADDRESS")
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	@Column (table="ADDRESS")
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
+//	@Column (table="ADDRESS")
+//	public String getStreet() {
+//		return street;
+//	}
+//
+//	public void setStreet(String street) {
+//		this.street = street;
+//	}
+//
+//	@Column (table="ADDRESS")
+//	public String getCity() {
+//		return city;
+//	}
+//
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//
+//	@Column (table="ADDRESS")
+//	public String getZipcode() {
+//		return zipcode;
+//	}
+//
+//	public void setZipcode(String zipcode) {
+//		this.zipcode = zipcode;
+//	}
 }
