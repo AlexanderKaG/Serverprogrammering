@@ -35,8 +35,9 @@ public class HibernateTest {
 //			System.out.println(name);
 //		}
 
-//		long numberOfStudents = (Long) em.createQuery("select count(student) from Student student").getSingleResult();
-//		System.out.println("We have " + numberOfStudents + " students");
+		int numberOfStudents = ((Long) em.createQuery("select count(student)from Student student").getSingleResult())
+				.intValue();
+		System.out.println("We have " + numberOfStudents + " students");
 
 //		List<Object[]> results = em.createQuery("select student.name, student.enrollmentID from Student student")
 //				.getResultList();
