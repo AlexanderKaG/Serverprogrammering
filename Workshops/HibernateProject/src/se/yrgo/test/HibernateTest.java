@@ -76,11 +76,13 @@ public class HibernateTest {
 		String city = "city 2";
 		List<Tutor> results2 = em.createQuery(
 				"select distinct tutor from Tutor tutor join tutor.teachingGroup student where student.address.city = :city")
-				.setParameter("city", city)
-				.getResultList();
+				.setParameter("city", city).getResultList();
 		for (Tutor tutor : results2) {
 			System.out.println(tutor);
 		}
+
+		long numberOfStudents = (Long) em.createQuery("select count(student) from Student student").getSingleResult();
+		System.out.println("We have " + numberOfStudents + " students");
 
 		tx.commit();
 		em.close();
