@@ -23,6 +23,38 @@ public class HibernateTest {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
+//		List<Student> results = em.createNamedQuery("searchByName", Student.class).setParameter("name", "Bruce Lee")
+//				.getResultList();
+//		for (Student student : results) {
+//			System.out.println(student);
+//		}
+
+//		Query q = em.createQuery("select student.name from Student student");
+//		List<String> results1 = q.getResultList();
+//		for (String name : results1) {
+//			System.out.println(name);
+//		}
+
+//		long numberOfStudents = (Long) em.createQuery("select count(student) from Student student").getSingleResult();
+//		System.out.println("We have " + numberOfStudents + " students");
+
+//		List<Object[]> results = em.createQuery("select student.name, student.enrollmentID from Student student")
+//				.getResultList();
+//		for (Object[] obj : results) {
+//			System.out.println("Name: " + obj[0]);
+//			System.out.println("ID: " + obj[1]);
+//		}
+
+//		List<Object[]> results1 = em.createNativeQuery("select s.name,s.enrollmentid from student s").getResultList();
+//		for (Object[] result : results1) {
+//			System.out.println(result[0] + " ; " + result[1]);
+//		}
+
+		List<Student> students = em.createNativeQuery("select * from student s", Student.class).getResultList();
+		for (Student student : students) {
+			System.out.println(student);
+		}
+
 		tx.commit();
 		em.close();
 	}
@@ -58,31 +90,6 @@ public class HibernateTest {
 		em.persist(t1);
 		em.persist(t2);
 		em.persist(t3);
-
-//		Query query = em
-//				.createQuery("from Tutor tutor join tutor.teachingGroup student where student.address.city = 'city 2'");
-//		List<Object[]> results = query.getResultList();
-//		for (Object[] item : results) {
-//			System.out.println(item[0] + " --------- " + item[1]);
-//		}
-//
-//		Query query1 = em.createQuery(
-//				"select distinct tutor from Tutor as tutor join tutor.teachingGroup as student where student.address.city = 'city 2'");
-//		List<Tutor> results1 = query1.getResultList();
-//		for (Tutor t : results1) {
-//			System.out.println(t);
-//		}
-
-		String city = "city 2";
-		List<Tutor> results2 = em.createQuery(
-				"select distinct tutor from Tutor tutor join tutor.teachingGroup student where student.address.city = :city")
-				.setParameter("city", city).getResultList();
-		for (Tutor tutor : results2) {
-			System.out.println(tutor);
-		}
-
-		long numberOfStudents = (Long) em.createQuery("select count(student) from Student student").getSingleResult();
-		System.out.println("We have " + numberOfStudents + " students");
 
 		tx.commit();
 		em.close();
