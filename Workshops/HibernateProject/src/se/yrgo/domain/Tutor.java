@@ -18,11 +18,17 @@ import javax.persistence.Transient;
 @Entity
 public class Tutor {
 
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
 	private int Id;
+//	@Column(unique = true, nullable = false)
 	private String tutorId;
 	private String name;
 	private int salary;
+//	@OneToMany(cascade = CascadeType.PERSIST)
+//	@JoinColumn(name = "TUTOR_FK")
 	private Set<Student> teachingGroup;
+//	@ManyToMany(mappedBy = "tutors")
 	private Set<Subject> subjectsToTeach;
 
 	public Tutor() {

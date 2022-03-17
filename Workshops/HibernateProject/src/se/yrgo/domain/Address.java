@@ -44,6 +44,6 @@ public class Address {
 	}
 
 	public String toString() {
-		return String.format("Street: %s, City: %d, Zipcode: d%", street, city, zipcode);
+		return String.format("Street: %s, City: %s, Zipcode: s%", street, city, zipcode);
 	}
 }

@@ -119,8 +119,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Enrollment ID: %s, Name: %s, Address: %s, Number of courses: %d", Id,
-				enrollmentID, name, address, numberOfCourses);
+		return String.format("ID: %d, Enrollment ID: %s, Name: %s, %s, Number of courses: %d", Id,
+				enrollmentID, name, address.getStreet(), numberOfCourses);
 	}
 
 //	@Column (table="ADDRESS")
