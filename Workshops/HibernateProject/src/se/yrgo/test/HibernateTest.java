@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import se.yrgo.domain.Student;
@@ -50,7 +51,7 @@ public class HibernateTest {
 		Tutor t3 = new Tutor("GHI678", "Karin Lindberg", 0);
 		t3.addSubjectsToTeach(programming);
 
-		t1.createStudentAndAddtoTeachingGroup("Jimi Hendriks", "1-HEN-2019", "Street 1", "city 1", "1212");
+		t1.createStudentAndAddtoTeachingGroup("Jimi Hendriks", "1-HEN-2019", "Street 1", "city 2", "1212");
 		t1.createStudentAndAddtoTeachingGroup("Bruce Lee", "2-LEE-2019", "Street 2", "city 2", "2323");
 		t3.createStudentAndAddtoTeachingGroup("Roger Waters", "3-WAT-2018", "Street 3", "city 3", "34343");
 
@@ -58,27 +59,27 @@ public class HibernateTest {
 		em.persist(t2);
 		em.persist(t3);
 
-		TypedQuery<Student> q = em.createQuery("from Student as student where student.name = 'Jimi Hendriks'",
-				Student.class);
-		List<Student> students = q.getResultList();
-		for (Student student : students) {
-			System.out.println(student);
-		}
+//		Query query = em
+//				.createQuery("from Tutor tutor join tutor.teachingGroup student where student.address.city = 'city 2'");
+//		List<Object[]> results = query.getResultList();
+//		for (Object[] item : results) {
+//			System.out.println(item[0] + " --------- " + item[1]);
+//		}
+//
+//		Query query1 = em.createQuery(
+//				"select distinct tutor from Tutor as tutor join tutor.teachingGroup as student where student.address.city = 'city 2'");
+//		List<Tutor> results1 = query1.getResultList();
+//		for (Tutor t : results1) {
+//			System.out.println(t);
+//		}
 
-		q = em.createQuery("FROM Student as student WHERE student.enrollmentID ='1-HEN-2019' ", Student.class);
-		Student theStudent = (Student) q.getSingleResult();
-		System.out.println(theStudent);
-
-		q = em.createQuery("FROM Student as student WHERE lower(student.name) ='jimi hendriks'", Student.class);
-		Student st = (Student) q.getSingleResult();
-		System.out.println(st);
-
-		String requiredName = "Bruce Lee";
-		q = em.createQuery("FROM Student as student WHERE student.name=:name", Student.class);
-		q.setParameter("name", requiredName);
-		List<Student> QueryResult = q.getResultList();
-		for (Student st1 : QueryResult) {
-			System.out.println(st1);
+		String city = "city 2";
+		List<Tutor> results2 = em.createQuery(
+				"select distinct tutor from Tutor tutor join tutor.teachingGroup student where student.address.city = :city")
+				.setParameter("city", city)
+				.getResultList();
+		for (Tutor tutor : results2) {
+			System.out.println(tutor);
 		}
 
 		tx.commit();
