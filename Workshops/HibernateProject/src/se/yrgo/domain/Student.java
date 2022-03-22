@@ -25,11 +25,11 @@ public class Student extends Person {
 //	private String zipcode;
 
 	public Student() {
-		super(null);
+		super(null, null);
 	}
 
 	public Student(String name, String enrollmentID, String street, String city, String zipcode) {
-		super(name);
+		super(enrollmentID, name);
 		this.enrollmentID = enrollmentID;
 		this.numberOfCourses = 10;
 		this.address = new Address(street, city, zipcode);

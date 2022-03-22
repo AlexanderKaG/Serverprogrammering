@@ -24,12 +24,12 @@ public class Tutor extends Person {
 	private Set<Subject> subjectsToTeach;
 
 	public Tutor() {
-		super(null);
+		super(null, null);
 	}
 
 	public Tutor(String tutorId, String name, int salary) {
 
-		super(name);
+		super(tutorId, name);
 		this.tutorId = tutorId;
 		this.salary = salary;
 		this.teachingGroup = new HashSet<Student>();
