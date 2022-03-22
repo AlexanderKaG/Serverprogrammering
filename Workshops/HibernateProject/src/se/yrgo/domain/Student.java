@@ -10,7 +10,6 @@ import javax.persistence.Transient;
 
 @Entity
 @SecondaryTable(name = "ADDRESS")
-
 public class Student extends Person {
 
 	private String enrollmentID;

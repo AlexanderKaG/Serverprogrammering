@@ -31,6 +31,11 @@ public class HibernateTest {
 			person.getReport();
 		}
 
+		List<Student> students = em.createQuery("from Student").getResultList();
+		for (Student student : students) {
+			student.getReport();
+		}
+
 		tx.commit();
 		em.close();
 	}
