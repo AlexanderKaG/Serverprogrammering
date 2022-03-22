@@ -42,6 +42,7 @@ public class Student extends Person {
 		System.out.println("Report for student: " + this.getName());
 	}
 
+	@Column(unique = true, nullable = false)
 	public String getEnrollmentID() {
 		return enrollmentID;
 	}

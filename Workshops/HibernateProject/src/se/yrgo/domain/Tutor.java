@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -79,6 +80,7 @@ public class Tutor extends Person {
 		return this.subjectsToTeach;
 	}
 
+	@Column(unique = true, nullable = false)
 	public String getTutorId() {
 		return tutorId;
 	}
