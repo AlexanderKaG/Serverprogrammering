@@ -8,21 +8,21 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Id;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Person {
 	private int Id;
 	private String name;
-	
+
 	public Person(String name) {
 		this.name = name;
 	}
-	
+
 	public void getReport() {
-		
+
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return Id;
 	}

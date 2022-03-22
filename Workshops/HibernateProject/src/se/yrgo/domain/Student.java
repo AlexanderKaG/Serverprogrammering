@@ -9,11 +9,10 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Transient;
 
 @Entity
-@SecondaryTable(name="ADDRESS")
+@SecondaryTable(name = "ADDRESS")
 
-public class Student extends Person{
-	
-//	@Column(unique = true, nullable = false)
+public class Student extends Person {
+
 	private String enrollmentID;
 //	@Column(name = "NUM_COURSES")
 	private Integer numberOfCourses;
@@ -21,7 +20,7 @@ public class Student extends Person{
 	private String email;
 //	@Embedded
 	private Address address;
-	
+
 //	private String street;
 //	private String city;
 //	private String zipcode;
@@ -39,12 +38,11 @@ public class Student extends Person{
 //		this.city = city;
 //		this.zipcode = zipcode;
 	}
-	
+
 	public void getReport() {
 		System.out.println("Report for student: " + this.getName());
 	}
 
-	@Column(unique = true, nullable = false)
 	public String getEnrollmentID() {
 		return enrollmentID;
 	}
@@ -53,6 +51,7 @@ public class Student extends Person{
 		this.enrollmentID = enrollmentID;
 	}
 
+	@Transient
 	public String getName() {
 		return super.getName();
 	}

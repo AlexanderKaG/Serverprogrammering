@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -13,9 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Tutor extends Person{
-	
-//	@Column(unique = true, nullable = false)
+public class Tutor extends Person {
+
 	private String tutorId;
 	private int salary;
 //	@OneToMany(cascade = CascadeType.PERSIST)
@@ -40,7 +38,7 @@ public class Tutor extends Person{
 	public void getReport() {
 		System.out.println("Report for tutor: " + this.getName());
 	}
-	
+
 	public void createStudentAndAddtoTeachingGroup(String studentName, String enrollmentID, String street, String city,
 			String zipcode) {
 		Student student = new Student(studentName, enrollmentID, street, city, zipcode);
@@ -81,7 +79,6 @@ public class Tutor extends Person{
 		return this.subjectsToTeach;
 	}
 
-	@Column(unique = true, nullable = false)
 	public String getTutorId() {
 		return tutorId;
 	}
@@ -90,6 +87,7 @@ public class Tutor extends Person{
 		this.tutorId = tutorId;
 	}
 
+	@Transient
 	public String getName() {
 		return super.getName();
 	}
@@ -108,6 +106,7 @@ public class Tutor extends Person{
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d", super.getId(), tutorId, this.getName(), salary);
+		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d", super.getId(), tutorId, this.getName(),
+				salary);
 	}
 }
