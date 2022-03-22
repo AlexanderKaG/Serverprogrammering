@@ -16,14 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class Tutor {
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
-	private int Id;
+public class Tutor extends Person{
+	
 //	@Column(unique = true, nullable = false)
 	private String tutorId;
-	private String name;
 	private int salary;
 //	@OneToMany(cascade = CascadeType.PERSIST)
 //	@JoinColumn(name = "TUTOR_FK")
@@ -32,18 +28,22 @@ public class Tutor {
 	private Set<Subject> subjectsToTeach;
 
 	public Tutor() {
-
+		super(null);
 	}
 
 	public Tutor(String tutorId, String name, int salary) {
 
+		super(name);
 		this.tutorId = tutorId;
-		this.name = name;
 		this.salary = salary;
 		this.teachingGroup = new HashSet<Student>();
 		this.subjectsToTeach = new HashSet<Subject>();
 	}
 
+	public void getReport() {
+		System.out.println("Report for tutor: " + this.getName());
+	}
+	
 	public void createStudentAndAddtoTeachingGroup(String studentName, String enrollmentID, String street, String city,
 			String zipcode) {
 		Student student = new Student(studentName, enrollmentID, street, city, zipcode);
@@ -84,16 +84,6 @@ public class Tutor {
 		return this.subjectsToTeach;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
-	public int getId() {
-		return Id;
-	}
-
-	public void setId(int id) {
-		Id = id;
-	}
-
 	@Column(unique = true, nullable = false)
 	public String getTutorId() {
 		return tutorId;
@@ -104,11 +94,11 @@ public class Tutor {
 	}
 
 	public String getName() {
-		return name;
+		return super.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		super.setName(name);
 	}
 
 	public int getSalary() {
@@ -121,6 +111,6 @@ public class Tutor {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d", Id, tutorId, name, salary);
+		return String.format("ID: %d, Tutor ID: %s, Name: %s, Salary: %d", super.getId(), tutorId, this.getName(), salary);
 	}
 }

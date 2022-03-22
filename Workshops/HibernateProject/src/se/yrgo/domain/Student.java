@@ -14,13 +14,10 @@ import javax.persistence.Transient;
 @Entity
 @SecondaryTable(name="ADDRESS")
 
-public class Student {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
-	private int Id;
+public class Student extends Person{
+	
 //	@Column(unique = true, nullable = false)
 	private String enrollmentID;
-	private String name;
 //	@Column(name = "NUM_COURSES")
 	private Integer numberOfCourses;
 //	@Transient
@@ -33,11 +30,11 @@ public class Student {
 //	private String zipcode;
 
 	public Student() {
-
+		super(null);
 	}
 
 	public Student(String name, String enrollmentID, String street, String city, String zipcode) {
-		this.name = name;
+		super(name);
 		this.enrollmentID = enrollmentID;
 		this.numberOfCourses = 10;
 		this.address = new Address(street, city, zipcode);
@@ -45,15 +42,9 @@ public class Student {
 //		this.city = city;
 //		this.zipcode = zipcode;
 	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) // This line is optional
-	public int getId() {
-		return Id;
-	}
-
-	public void setId(int id) {
-		Id = id;
+	
+	public void getReport() {
+		System.out.println("Report for student: " + this.getName());
 	}
 
 	@Column(unique = true, nullable = false)
@@ -66,11 +57,11 @@ public class Student {
 	}
 
 	public String getName() {
-		return name;
+		return super.getName();
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		super.setName(name);
 	}
 
 	@Column(name = "NUM_COURSES")
@@ -119,8 +110,8 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Enrollment ID: %s, Name: %s, %s, Number of courses: %d", Id,
-				enrollmentID, name, address.getStreet(), numberOfCourses);
+		return String.format("ID: %d, Enrollment ID: %s, Name: %s, %s, Number of courses: %d", super.getId(),
+				enrollmentID, this.getName(), address.getStreet(), numberOfCourses);
 	}
 
 //	@Column (table="ADDRESS")
