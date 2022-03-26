@@ -17,12 +17,7 @@ public class EmployeeManagementImplementation implements EmployeeManagementServi
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		Employee emp1 = new Employee("James", "Green", "Writer", 3700);
-		Employee emp2 = new Employee("Sara", "Bild", "Editor", 2200);
-		List<Employee> employees = new ArrayList<Employee>();
-		employees.add(emp1);
-		employees.add(emp2);
-		return employees;
+		return null;
 	}
 
 	@Override
