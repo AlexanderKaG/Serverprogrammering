@@ -13,6 +13,22 @@ public class Employee implements java.io.Serializable {
 		this.salary = salary;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public String getJobRole() {
+		return jobRole;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
 	public String toString() {
 		return "Employee: " + this.firstName + " " + this.surname;
 	}
