@@ -3,8 +3,11 @@ package se.yrgo.dataaccess;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import se.yrgo.domain.Employee;
 
+@Stateless
 public class EmployeeDataAccessTestingVersion implements EmployeeDataAccess {
 
 	@Override
