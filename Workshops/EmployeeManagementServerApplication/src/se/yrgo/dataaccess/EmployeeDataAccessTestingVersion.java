@@ -12,7 +12,7 @@ public class EmployeeDataAccessTestingVersion implements EmployeeDataAccess {
 
 	@Override
 	public void insert(Employee newEmployee) {
-
+		
 	}
 
 	@Override
