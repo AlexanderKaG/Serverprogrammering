@@ -14,7 +14,7 @@ public class EmployeeDataAccessTestingVersion implements EmployeeDataAccess {
 
 	@Override
 	public void insert(Employee newEmployee) {
-		
+
 	}
 
 	@Override
@@ -32,6 +32,11 @@ public class EmployeeDataAccessTestingVersion implements EmployeeDataAccess {
 
 	@Override
 	public List<Employee> findBySurname(String surname) {
+		return null;
+	}
+
+	@Override
+	public Employee findById(int id) {
 		return null;
 	}
 

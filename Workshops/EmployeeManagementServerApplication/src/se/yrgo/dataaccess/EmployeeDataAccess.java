@@ -8,6 +8,9 @@ import se.yrgo.domain.Employee;
 
 @Local
 public interface EmployeeDataAccess {
+
+	public Employee findById(int id);
+
 	public void insert(Employee newEmployee);
 
 	public List<Employee> findAll();

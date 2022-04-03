@@ -30,4 +30,8 @@ public class EmployeeManagementImplementation implements EmployeeManagementServi
 		return dao.findBySurname(surname);
 	}
 
+	public Employee getById(int id) {
+		return dao.findById(id);
+	}
+
 }
