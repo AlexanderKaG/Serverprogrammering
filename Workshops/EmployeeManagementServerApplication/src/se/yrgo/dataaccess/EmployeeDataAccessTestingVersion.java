@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Alternative;
 
 import se.yrgo.domain.Employee;
 
 @Stateless
+@Alternative
 public class EmployeeDataAccessTestingVersion implements EmployeeDataAccess {
 
 	@Override
