@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import se.yrgo.dataaccess.EmployeeDataAccess;
+import se.yrgo.dataaccess.EmployeeNotFoundException;
 import se.yrgo.domain.Employee;
 
 @Stateless
@@ -30,7 +31,7 @@ public class EmployeeManagementImplementation implements EmployeeManagementServi
 		return dao.findBySurname(surname);
 	}
 
-	public Employee getById(int id) {
+	public Employee getById(int id) throws EmployeeNotFoundException {
 		return dao.findById(id);
 	}
 

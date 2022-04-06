@@ -9,7 +9,7 @@ import se.yrgo.domain.Employee;
 @Local
 public interface EmployeeDataAccess {
 
-	public Employee findById(int id);
+	public Employee findById(int id) throws EmployeeNotFoundException;
 
 	public void insert(Employee newEmployee);
 

@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.ejb.Local;
 
+import se.yrgo.dataaccess.EmployeeNotFoundException;
 import se.yrgo.domain.Employee;
 
 @Local
 public interface EmployeeManagementService {
 
-	public Employee getById(int id);
+	public Employee getById(int id) throws EmployeeNotFoundException;
 
 	public void registerEmployee(Employee employee);
 
