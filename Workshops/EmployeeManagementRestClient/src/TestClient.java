@@ -11,29 +11,12 @@ public class TestClient {
 	public static void main(String[] args) {
 		Client client = ClientBuilder.newClient();
 
-		Employee ben = new Employee();
-		ben.setFirstName("Ben");
-		ben.setSurname("Red");
-		ben.setJobRole("Tester");
-		ben.setSalary(1000);
+		Response response = client.target("http://localhost:8080/EmployeeManagement/webservice/employees/4")
+				.request("application/JSON").buildGet().invoke();
 
-		Entity benEntity = Entity.entity(ben, "application/JSON");
-
-		Response response = client.target("http://localhost:8080/EmployeeManagement/webservice/employees").request()
-				.buildPost(benEntity).invoke();
-
-		System.out.println(response.readEntity(Employee.class).getId());
-		response.close();
-
-		response = client.target("http://localhost:8080/EmployeeManagement/webservice/employees").request().buildGet()
-				.invoke();
-
-		List<Employee> employees = response.readEntity(new GenericType<List<Employee>>() {
-		});
-
-		for (Employee e : employees) {
-			System.out.println(e);
-		}
+		System.out.println(response.getHeaders().toString());
+		System.out.println(response.getStatus());
+		System.out.println(response.readEntity(String.class));
 
 		response.close();
 	}
